@@ -2,7 +2,7 @@
 var mongoose = require('mongoose'); // gives the controllers access to the database connection
 
  // brings in the Food model so that we can interact 
- var Food = mongoose.model('Food');
+ var food = mongoose.model('food');
 
 //  create a sendJsonResponse function
 var sendJsonResponse =  function(res, status, content) {
@@ -12,7 +12,7 @@ var sendJsonResponse =  function(res, status, content) {
 
 // function to get the entire foodList
 module.exports.foodList = function(req, res){
-	Food.find()
+	food.find()
 	.exec(function(err, foodList){
 		if(!foodList || foodList.length == 0){
 			sendJsonResponse(res, 404, {
@@ -34,7 +34,7 @@ module.exports.foodList = function(req, res){
 module.exports.foodReadOne = function(req, res) {
     console.log('Finding food details', req.params);
     if (req.params && req.params.foodid) {
-      Food
+      food
         .findById(req.params.foodid)
         .exec(function(err, foodItem) {
           if (!foodItem) {
@@ -61,7 +61,7 @@ module.exports.foodReadOne = function(req, res) {
 // POST method to create a food Item
 module.exports.foodCreate = function(req, res) {
     console.log(req.body);
-    Food.create({
+    food.create({
       name: req.body.name,
       date: req.body.date,
       expiry: req.body.expiry,
@@ -87,7 +87,7 @@ module.exports.foodUpdateOne = function(req, res) {
       });
       return;
     }
-    Food
+    food
       .findById(req.params.foodid)
       .exec(
         function(err, foodItem) {
@@ -122,7 +122,7 @@ module.exports.foodDeleteOne = function (req, res)
 { 
     var foodid = req.params.foodid;
     if(foodid) {
-			Food
+			food
 				.findById(req.params.foodid)
 				.exec(function(err, foodItem) {
 					if(!foodItem) {

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  #banner.page-header
+    br
+    .row
+        .col-lg-6
+            h1= title
+    .row
+        .col-xs-12.col-sm-8
+          .error= message
+          .row.list-group
+            each item in foodItems
+              .col-xs-10.list-group-item
+                h4 Product: #{item.name}
+                ul
+                  li Put-in date: #{item.date.substring(0,10)}
+                  - if(item.expiry)
+                    li Expiry date: #{item.expiry.substring(0,10)}
+                  li Left Over: #{item.left_overs}
+                  li Quantity: #{item.quantity}

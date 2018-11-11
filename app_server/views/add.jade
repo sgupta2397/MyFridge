@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      h1= title
+  .row
+    .col-xs-12.col-md-6
+      form.form-horizontal(action="", method="post", role="form")
+        .form-group
+          label.col-xs-10.col-sm-3.control-label(for="name") Name
+          .col-xs-12.col-sm-8
+            input#name.form-control(name="name",required="true")
+        .form-group
+          label.col-xs-10.col-sm-3.control-label(for="date") Put-In Date
+          .col-xs-12.col-sm-8
+            input#name.form-control(name="date",required="true",type="date")
+        .form-group
+          label.col-xs-10.col-sm-3.control-label(for="expiry") Expiry date
+          .col-xs-12.col-sm-8
+            input#name.form-control(name="expiry",type="date")
+        .form-group
+          label.col-xs-10.col-sm-3.control-label(for="left_overs") Left Over?
+          .col-xs-12.col-sm-8
+            select#rating.form-control.input-sm(name="left_overs")
+              option(value="false") NO
+              option(value="true") YES
+        .form-group
+          label.col-xs-10.col-sm-3.control-label(for="quantity") Quantity
+          .col-xs-12.col-sm-8
+            input#name.form-control(name="quantity",required="true",type="Number")
+
+        button.btn.btn-default.pull-right Add Food Item

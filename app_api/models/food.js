@@ -10,4 +10,4 @@ var foodSchema = new mongoose.Schema({
  quantity: {type: Number, "default": 1, min: 1}
 });
 
-mongoose.model('Food', foodSchema); // compiling a model from a schema
+mongoose.model('food', foodSchema); // compiling a model from a schema
